@@ -1,5 +1,0 @@
----
-- hosts: service_gradle_java
-  remote_user: vagrant
-  roles:
-    - service_gradle_java

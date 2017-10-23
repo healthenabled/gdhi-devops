@@ -1,5 +1,5 @@
-[app_apache]
+[app]
 10.134.20.128 ansible_user=vagrant ansible_passwd=vagrant
 
-[service_gradle_java]
+[service]
 10.134.20.128 ansible_user=vagrant ansible_passwd=vagrant
