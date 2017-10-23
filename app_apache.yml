@@ -1,0 +1,6 @@
+---
+- hosts: app_apache
+  remote_user: vagrant
+  roles:
+    - app_apache
+  become: yes

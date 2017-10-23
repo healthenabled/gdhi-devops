@@ -1,0 +1,17 @@
+---
+  # - name: install the 'Development tools' package group
+  #   yum:
+  #     - name: "@Development tools"
+  #     - state: present
+  #
+
+  - name: install apache web server
+    yum:
+       name: httpd
+       state: present
+       update_cache: yes
+
+  - name: Make sure a service is running
+    systemd:
+       name: httpd
+       state: started
