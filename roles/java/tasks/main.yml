@@ -1,2 +1,11 @@
 ---
 # tasks file for java
+  - name: Install Java8
+    yum:
+       name: java-1.8.0-openjdk
+       state: present
+       update_cache: yes
+    become: yes
+
+  - name: Check version
+    command: "java -version"

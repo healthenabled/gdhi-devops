@@ -10,8 +10,10 @@
        name: httpd
        state: present
        update_cache: yes
+    become: yes
 
   - name: Make sure a service is running
     systemd:
        name: httpd
        state: started
+    become: yes

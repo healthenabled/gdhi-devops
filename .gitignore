@@ -6,6 +6,7 @@
 pro_host
 ### Git ###
 *.orig
+#*.gitignore
 
 ### Java ###
 # Compiled class file
@@ -58,3 +59,5 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 # End of https://www.gitignore.io/api/git,java,gradle,ansible,terraform
+
+##Host File Details#
