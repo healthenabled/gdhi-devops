@@ -1,0 +1,34 @@
+---
+# tasks file for service
+- name: Download GDHI Artifact
+  get_url:
+    url: "{{Artifact_Url}}"
+    dest: /opt/gdhi/service/gdhi-1.0.jar
+    timeout: 30
+  become: yes
+
+- name: Daemon_Reload GDHI
+  systemd:
+    name: gdhi.service
+    state: stopped
+    daemon_reload: yes
+  become: yes
+
+- name: GDHI Service Copy Template file
+  template:
+    src: gdhi.service
+    dest: /etc/systemd/system/gdhi.service
+  become: yes
+
+- name: Daemon_Reload GDHI
+  systemd:
+    name: gdhi.service
+    state: started
+    daemon_reload: yes
+  become: yes
+
+- name: Start Service GDHI
+  systemd:
+    name: gdhi.service
+    state: restarted
+  become: yes

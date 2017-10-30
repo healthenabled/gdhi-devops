@@ -1,0 +1,3 @@
+---
+# vars file for service
+Artifact_Url: http://ec2-34-206-29-117.compute-1.amazonaws.com:8080/job/gdhi-service/lastSuccessfulBuild/artifact/build/libs/gdhi-1.0.jar
