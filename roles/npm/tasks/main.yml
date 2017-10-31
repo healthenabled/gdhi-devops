@@ -1,0 +1,7 @@
+---
+# tasks file for npm
+- name: Install npm
+  yum:
+    name: npm
+    state: present
+  become: yes

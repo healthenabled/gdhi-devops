@@ -1,9 +1,9 @@
 ---
 # tasks file for service
-- name: Download GDHI Artifact
+- name: Download GDHI_Service Artifact
   get_url:
-    url: "{{Artifact_Url}}"
-    dest: /opt/gdhi/service/gdhi-1.0.jar
+    url: "{{Artifact_App_Url}}"
+    dest: /var/www/html
     timeout: 30
   become: yes
 

@@ -4,7 +4,6 @@
   #     - name: "@Development tools"
   #     - state: present
   #
-
   - name: install apache web server
     yum:
        name: httpd

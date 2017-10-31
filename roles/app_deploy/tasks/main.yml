@@ -1,0 +1,21 @@
+---
+# tasks file for app
+- name: Download GDHI_App Artifact
+  get_url:
+    url: "{{Artifact_Url}}"
+    dest: /opt/gdhi/service/gdhi-1.0.jar
+    timeout: 30
+  become: yes
+
+- name: Web Service Config file
+  template:
+    src: httpd.conf
+    dest: /etc/httpd/conf
+  become: yes
+
+- name: Daemon_Reload HTTPD
+  systemd:
+    name: httpd
+    state: restarted
+    daemon_reload: yes
+  become: yes
