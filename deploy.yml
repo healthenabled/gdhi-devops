@@ -1,5 +1,0 @@
-- hosts: service
-  remote_user: centos
-  roles:
-    - service
-    - app

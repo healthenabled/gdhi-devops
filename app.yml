@@ -1,6 +1,0 @@
----
-- hosts: app
-  remote_user: vagrant
-  roles:
-    - app
-  become: yes

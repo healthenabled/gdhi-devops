@@ -1,5 +1,0 @@
-[app]
-ansible_user=vagrant ansible_passwd=vagrant
-
-[service]
-ansible_user=vagrant ansible_passwd=vagrant

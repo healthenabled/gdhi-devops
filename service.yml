@@ -1,9 +1,0 @@
----
-- hosts: service
-  remote_user: centos
-  roles:
-    - apache
-    - java
-    - gradle
-    - service
-    - app
