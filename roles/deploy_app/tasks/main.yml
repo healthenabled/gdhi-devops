@@ -1,0 +1,9 @@
+---
+  - name: Download GDHI_App Artifact
+    unarchive:
+      src: "{{ artifact_app_url }}"
+      dest: "{{deploy_dir}}"
+      remote_src: yes
+      mode: u+rwx
+      extra_opts: [--strip-components=1]
+    become: yes

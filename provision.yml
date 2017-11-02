@@ -1,0 +1,11 @@
+---
+- hosts: prod
+  remote_user: centos
+  roles:
+    - apache
+    - deploy_app
+  vars_files:
+    - 'vars/prod.yml'
+    # - java
+    # #- gradle
+    # - service

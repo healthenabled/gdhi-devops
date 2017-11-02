@@ -1,0 +1,8 @@
+---
+- hosts: service
+  remote_user: centos
+  vars_files:
+    - 'vars/prod.yml'
+  roles:
+    - service
+    - app

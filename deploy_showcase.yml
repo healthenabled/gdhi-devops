@@ -1,0 +1,7 @@
+---
+#About this File: CI Deployment Which is your Jenkins Server Going to Run
+- hosts: service
+  remote_user: centos
+  roles:
+    - service
+    - app
