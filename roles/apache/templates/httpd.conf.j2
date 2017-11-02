@@ -53,7 +53,7 @@ ErrorLog "logs/error_log"
     UserDir disabled
 </IfModule>
 
-ProxyPass "/api" "{{proxy_pass_url}}:{{proxy_pass_port}}" connectiontimeout=600000000 timeout=600000000
+ProxyPass "/api" "{{service_url}}:{{server_port}}" connectiontimeout=600000000 timeout=600000000
 
 <IfModule log_config_module>
     LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined

@@ -1,0 +1,35 @@
+server:
+  port: {{server_port}}
+
+spring:
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:postgresql://{{service_deploy_db_host}}:{{db_port}}/{{db_name}}
+    host: {{service_deploy_db_host}}
+    port: {{db_port}}
+    username: {{service_deploy_db_username}}
+    password: {{service_deploy_db_password}}
+  jpa:
+    showSql: true
+    formatSql: true
+    hibernate:
+      ddlAuto: true
+      namingStrategy : org.hibernate.cfg.ImprovedNamingStrategy
+      dialect: org.hibernate.dialect.PostgreSQL94Dialect
+
+db:
+  url: jdbc:postgresql://{{service_deploy_db_host}}:{{db_port}}/{{db_name}}
+  host: {{service_deploy_db_host}}
+  port: {{db_port}}
+  username: {{service_deploy_db_username}}
+  password: {{service_deploy_db_password}}
+  driverClassName: org.postgresql.Driver
+
+endpoints.info.id: ping
+endpoints.info.sensitive: false
+endpoints.info.enabled: true
+info.AppName: GDHI-Service
+info.Description: Application Health Checker
+info.body: pong
+info.status: 200
