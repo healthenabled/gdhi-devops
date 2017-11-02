@@ -2,8 +2,7 @@
 - name: Download GDHI_service artifact
   get_url:
     url: "{{artifact_service_url}}"
-    dest: {{deploy_path}}/gdhi-1.0.jar
-    timeout: 30
+    dest: "{{deploy_path}}/{{gdhi_jar}}"
   become: yes
 
 - name: GDHI appllication.yml copy template file
