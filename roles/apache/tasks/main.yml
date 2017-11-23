@@ -12,7 +12,7 @@
     become: yes
 
   - name: Selinux Httpd Can Connect
-    setboolean:
+    seboolean:
       name: httpd_can_network_connect
       state: yes
       persistent: yes
