@@ -1,4 +1,8 @@
 ---
+- name: Create application directory
+  file: path={{deploy_path}} state=directory recurse=yes
+  become: yes
+
 - name: Download GDHI_service artifact
   get_url:
     url: "{{artifact_service_url}}"
