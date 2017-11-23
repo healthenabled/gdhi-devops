@@ -1,1 +1,2 @@
 deploy_path: /opt/gdhi/service
+application_config_path: /opt/gdhi/service/application.yml

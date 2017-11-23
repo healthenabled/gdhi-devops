@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=root
 EnvironmentFile=/opt/gdhi/service/application.yml
-ExecStart=/usr/bin/java -jar {{deploy_path}}/gdhi-1.0.jar
+ExecStart=/usr/bin/java -jar {{deploy_path}}/gdhi-1.0.jar --spring.config.location={{application_config_path}}
 PIDFile=/opt/gdhi/service/pid/gdhi.pid
 Restart=on-abort
 
