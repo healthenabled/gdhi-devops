@@ -12,7 +12,7 @@
 - name: GDHI appllication.yml copy template file
   template:
     src: application.yml.j2
-    dest: /opt/gdhi/service
+    dest: /opt/gdhi/service/application.yml
   become: yes
 
 - name: GDHI service copy template file
