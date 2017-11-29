@@ -21,6 +21,7 @@ spring:
   mail:
     host: smtp.gmail.com
     port:465
+    protocol: smtps
     username: {{from_mail_address}}
     password: {{from_mail_password}}
     properties:
@@ -53,3 +54,10 @@ mailer:
   addressMap:
     {{to_address_email_1}}: {{to_address_name_1}}
     {{to_address_email_2}}: {{to_address_name_2}}
+
+logging:
+  level: info
+  file: {{logs_dir}}/{{log_file}}
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

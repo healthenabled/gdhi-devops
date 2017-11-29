@@ -1,2 +1,5 @@
 deploy_path: /opt/gdhi/service
 application_config_path: /opt/gdhi/service/application.yml
+logs_dir: {{deploy_path}}/logs
+log_file: gdhi.log
+log_file_err: gdhi-err.log
