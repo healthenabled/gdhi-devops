@@ -7,6 +7,18 @@
   file: path={{logs_dir}} state=directory recurse=yes
   become: yes
 
+- name: Stop service GDHI
+  systemd:
+    name: gdhi.service
+    state: stop
+    daemon_reload: yes
+  become: yes
+
+- name: Remove existing jar
+  file:
+    path: "{{deploy_path}}/{{gdhi_jar}}"
+    state: absent  
+
 - name: Download GDHI_service artifact
   get_url:
     url: "{{artifact_service_url}}"
@@ -19,11 +31,13 @@
     dest: "{{deploy_path}}/application.yml"
   become: yes
 
+
 - name: GDHI service copy template file
   template:
     src: gdhi.service.j2
     dest: /etc/systemd/system/gdhi.service
   become: yes
+
 
 - name: Start service GDHI
   systemd:
