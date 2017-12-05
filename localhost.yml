@@ -1,0 +1,14 @@
+---
+- hosts: all
+  remote_user: centos
+  tasks:
+    - name: Install  package
+      yum: name=libsemanage-python state=present
+  roles:
+    - java
+    - apache
+    - deploy_app
+    - deploy_service
+  vars_files:
+    - 'vars/showcase.yml'
+  

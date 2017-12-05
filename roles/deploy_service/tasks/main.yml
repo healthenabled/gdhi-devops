@@ -7,17 +7,24 @@
   file: path={{logs_dir}} state=directory recurse=yes
   become: yes
 
+- name: Check that the gdhi.service exists
+  stat:
+    path: /etc/systemd/system/gdhi.service
+  register: stat_result
+
 - name: Stop service GDHI
   systemd:
     name: gdhi.service
     state: stopped
     daemon_reload: yes
   become: yes
+  when: stat_result.stat.exists == True
 
 - name: Remove existing jar
   file:
     path: "{{deploy_path}}/{{gdhi_jar}}"
     state: absent  
+  become: yes  
 
 - name: Download GDHI_service artifact
   get_url:
