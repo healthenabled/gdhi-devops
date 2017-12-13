@@ -16,5 +16,6 @@ Vagrant.configure(2) do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
     ansible.playbook = "localhost.yml"
+    ansible.skip_tags = "production"
   end
 end
