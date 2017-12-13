@@ -11,6 +11,10 @@
       dest: /etc/httpd/conf/httpd.conf
     become: yes
 
+  - name: Install libsemanage package
+    yum: name=libsemanage-python state=present
+  
+
   - name: Selinux Httpd Can Connect
     seboolean:
       name: httpd_can_network_connect

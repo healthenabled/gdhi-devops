@@ -1,9 +1,6 @@
 ---
 - hosts: all
   remote_user: centos
-  tasks:
-    - name: Install  package
-      yum: name=libsemanage-python state=present
   roles:
     - java
     - apache
