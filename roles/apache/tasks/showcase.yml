@@ -3,7 +3,7 @@
 - name: Daemon_Reload HTTPD
   service:
     name: httpd
+    enabled: yes
     state: restarted
-    daemon_reload: yes
   become: yes
   tags: showcase
