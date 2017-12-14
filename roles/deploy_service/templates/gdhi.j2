@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# chkconfig: 5 98 77
+
+source /etc/rc.d/init.d/functions
+
+JAR="{{deploy_path}}/{{gdhi_jar}}"
+CONFIG_FILE="{{application_config_path}}"
+#stdout_log="/home/ec2-user/public/logs/gdhi-service.log"
+#stderr_log="/home/ec2-user/public/logs/gdhi-service.err"
+
+start() {
+  echo -n $"Starting ${NAME}: "
+  nohup java -jar $JAR --spring.config.location=$CONFIG_FILE #>> $stdout_log 2>> $stderr_log &
+  PID="$!"
+  echo "$PID" > "{{deploy_path}}/gdhi.pid"
+  echo "Started, pid: $PID"
+  success
+}
+
+stop() {
+  echo -n $"Shutting down $prog: "
+  echo "{{deploy_path}}/gdhi.pid"
+  killproc -p "{{deploy_path}}/gdhi.pid"
+}
+
+restart() {
+  stop
+  start
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    restart
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|restart}"
+esac
