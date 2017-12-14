@@ -16,13 +16,14 @@ Listen 8080
 
 #Include conf.modules.d/*.conf
 
-#Include conf.d/*.conf
+Include conf.d/*.conf
 
 LoadModule authz_host_module modules/mod_authz_host.so
 LoadModule rewrite_module modules/mod_rewrite.so
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule proxy_http_module modules/mod_proxy_http.so
 LoadModule headers_module modules/mod_headers.so
+LoadModule mime_module modules/mod_mime.so
 
 User apache
 Group apache
@@ -44,6 +45,14 @@ DocumentRoot "/var/www/html"
     RewriteRule "!^static(.*)$" index.html
     LimitRequestBody 2147483647
 </Directory>
+
+<IfModule mime_module>
+    TypesConfig /etc/mime.types
+    AddType application/x-compress .Z
+    AddType application/x-gzip .gz .tgz
+    AddType text/html .shtml
+    AddOutputFilter INCLUDES .shtml
+</IfModule>
 
 <IfModule dir_module>
     DirectoryIndex index.html
@@ -92,8 +101,6 @@ AddDefaultCharset UTF-8
 <IfModule mime_magic_module>
     MIMEMagicFile conf/magic
 </IfModule>
-
-Include conf.d/*.conf
 
 ServerSignature On
 
