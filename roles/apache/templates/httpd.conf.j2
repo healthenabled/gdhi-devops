@@ -18,6 +18,8 @@ Listen 8080
 
 #Include conf.d/*.conf
 
+LoadModule authz_host_module modules/mod_authz_host.so
+
 User apache
 Group apache
 
