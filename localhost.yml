@@ -7,5 +7,5 @@
     - deploy_app
     - deploy_service
   vars_files:
-    - 'vars/showcase.yml'
+    - 'vars/prod.yml'
   

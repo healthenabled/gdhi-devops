@@ -8,6 +8,13 @@
   become: yes
   tags: production
 
+- name: Web Service Config file
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+  become: yes
+  tags: production
+
 - name: Daemon_Reload HTTPD
   systemd:
     name: httpd

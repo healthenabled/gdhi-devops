@@ -5,12 +5,6 @@
        state: present
     become: yes
 
-  - name: Web Service Config file
-    template:
-      src: httpd.conf.j2
-      dest: /etc/httpd/conf/httpd.conf
-    become: yes
-  
   - name: production tasks
     include: production.yml
 

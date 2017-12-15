@@ -14,9 +14,9 @@ KeepAliveTimeout 15
 
 Listen 8080
 
-Include conf.modules.d/*.conf
+#Include conf.modules.d/*.conf
 
-#Include conf.d/*.conf
+Include conf.d/*.conf
 
 LoadModule authz_host_module modules/mod_authz_host.so
 LoadModule rewrite_module modules/mod_rewrite.so
