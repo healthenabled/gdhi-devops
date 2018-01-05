@@ -38,7 +38,7 @@
 
 - name: Remove existing jar
   file:
-    path: "{{deploy_path}}/{{gdhi_jar}}"
+    path: "{{deploy_path}}/gdhi-1.0.*"
     state: absent  
   become: yes  
 
