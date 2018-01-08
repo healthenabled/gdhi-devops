@@ -37,9 +37,9 @@
   tags: showcase
 
 - name: Find existing jar
-- find: 
-  paths: "{{deploy_path}}"
-  patterns: "gdhi-1.0.*"
+  find: 
+    paths: "{{deploy_path}}"
+    patterns: "gdhi-1.0.*"
   register: jar_files
 
 - name: Remove existing jar
