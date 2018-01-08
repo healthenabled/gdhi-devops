@@ -61,6 +61,12 @@
     dest: "{{deploy_path}}/application.yml"
   become: yes
 
+- name: GDHI logback.yml copy template file
+  template:
+    src: logback-spring.xml.j2
+    dest: "{{deploy_path}}/logback-spring.xml"
+  become: yes
+
 
 - name: GDHI service copy template file
   template:
