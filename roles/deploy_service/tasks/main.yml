@@ -36,10 +36,17 @@
   when: stat_showcase_result.stat.exists == True
   tags: showcase
 
+- name: Find existing jar
+- find: 
+  paths: "{{deploy_path}}"
+  patterns: "gdhi-1.0.*"
+  register: jar_files
+
 - name: Remove existing jar
   file:
-    path: "{{deploy_path}}/gdhi-1.0.*"
-    state: absent  
+    path: "{{ item['path'] }}"
+    state: absent
+  with_items: "{{ jar_files['files'] }}"    
   become: yes  
 
 - name: Download GDHI_service artifact

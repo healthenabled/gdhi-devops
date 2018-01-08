@@ -6,12 +6,12 @@ source /etc/rc.d/init.d/functions
 
 JAR="{{deploy_path}}/{{gdhi_jar}}"
 CONFIG_FILE="{{application_config_path}}"
-#stdout_log="/home/ec2-user/public/logs/gdhi-service.log"
+stdout_log="{{logs_dir}}/{{log_file}}"
 #stderr_log="/home/ec2-user/public/logs/gdhi-service.err"
 
 start() {
   echo -n $"Starting ${NAME}: "
-  nohup java -jar $JAR --spring.config.location=$CONFIG_FILE #>> $stdout_log 2>> $stderr_log &
+  nohup java -jar $JAR --spring.config.location=$CONFIG_FILE >> $stdout_log &
   PID="$!"
   echo "$PID" > "{{deploy_path}}/gdhi.pid"
   echo "Started, pid: $PID"
