@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: gdhi-app
+  labels:
+    app: gdhi-app
+spec: 
+  containers: 
+    - name: gdhi-app
+      image: healthenabled/app
+
+
