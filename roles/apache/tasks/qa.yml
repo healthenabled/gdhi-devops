@@ -1,0 +1,16 @@
+---
+
+- name: Web Service Config file
+  template:
+    src: httpd_qa.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+  become: yes
+  tags: qa
+
+- name: Daemon_Reload HTTPD
+  service:
+    name: httpd
+    enabled: yes
+    state: restarted
+  become: yes
+  tags: qa
