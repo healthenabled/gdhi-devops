@@ -4,7 +4,7 @@
   roles:
     - java
     - apache
-#    - deploy_app
-#    - deploy_service
+    - deploy_app
+    - deploy_service
   vars_files:
     - 'vars/qa.yml'
