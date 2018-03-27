@@ -7,12 +7,9 @@
 
   - name: production tasks
     include: production.yml
-    tags: production
 
   - name: showcase tasks
     include: showcase.yml
-    tags: showcase
 
   - name: qa tasks
     include: qa.yml
-    tags: qa
