@@ -12,13 +12,13 @@
     path: /etc/systemd/system/gdhi.service
   register: stat_result
 
-# - name: Stop service GDHI
-#   systemd:
-#     name: gdhi.service
-#     state: stopped
-#     daemon_reload: yes
-#   become: yes
-#   when: stat_result.stat.exists == True
+- name: Stop service GDHI
+  systemd:
+    name: gdhi.service
+    state: stopped
+    daemon_reload: yes
+  become: yes
+  when: stat_result.stat.exists == True
 
 - name: Check that the gdhi exists
   stat:
@@ -63,18 +63,19 @@
     dest: "{{deploy_path}}/logback-spring.xml"
   become: yes
 
-# - name: GDHI service copy template file
-#   template:
-#     src: gdhi.service.j2
-#     dest: /etc/systemd/system/gdhi.service
-#   become: yes
-#
-# - name: Start service GDHI
-#   systemd:
-#     name: gdhi.service
-#     state: restarted
-#     daemon_reload: yes
-#   become: yes
+
+- name: GDHI service copy template file
+  template:
+    src: gdhi.service.j2
+    dest: /etc/systemd/system/gdhi.service
+  become: yes
+
+- name: Start service GDHI
+  systemd:
+    name: gdhi.service
+    state: restarted
+    daemon_reload: yes
+  become: yes
 
 - name: GDHI service copy template file for showcase
   template:
