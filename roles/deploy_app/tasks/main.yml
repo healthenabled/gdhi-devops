@@ -5,5 +5,6 @@
       dest: "{{deploy_dir}}"
       remote_src: yes
       mode: u+rwx
+      owner: "root:root"
       extra_opts: [--strip-components=1]
     become: yes
