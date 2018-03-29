@@ -1,5 +1,11 @@
 ---
 
+- name: install apache web server
+  yum:
+     name: httpd
+     state: present
+  become: yes
+
 - name: Web Service Config file
   template:
     src: httpd_showcase.conf.j2
