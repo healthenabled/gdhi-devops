@@ -7,3 +7,4 @@
       mode: 0777
       extra_opts: [--strip-components=1]
     become: yes
+    tags: showcase_v2
