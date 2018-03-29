@@ -1,16 +1,20 @@
 ---
+- name: Selinux Httpd Can Connect
+  seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes
+  become: yes
 
-# - name: Web Service Config file
-#   template:
-#     src: httpd_qa.conf.j2
-#     dest: /etc/httpd/conf/httpd.conf
-#   become: yes
-#   tags: qa
+- name: Web Service Config file
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+  become: yes
 
 - name: Daemon_Reload HTTPD
-  service:
+  systemd:
     name: httpd
-    enabled: yes
     state: restarted
+    daemon_reload: yes
   become: yes
-  tags: qa

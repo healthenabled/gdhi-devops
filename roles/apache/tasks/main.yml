@@ -16,3 +16,7 @@
   - name: qa tasks
     include: qa.yml
     tags: qa
+
+  - name: showcase_v2 tasks
+    include: showcase_v2.yml
+    tags: showcase_v2

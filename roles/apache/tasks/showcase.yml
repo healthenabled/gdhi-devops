@@ -5,7 +5,6 @@
     src: httpd_showcase.conf.j2
     dest: /etc/httpd/conf/httpd.conf
   become: yes
-  tags: showcase
 
 - name: Daemon_Reload HTTPD
   service:
@@ -13,4 +12,3 @@
     enabled: yes
     state: restarted
   become: yes
-  tags: showcase

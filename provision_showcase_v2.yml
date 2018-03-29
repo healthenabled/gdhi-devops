@@ -1,0 +1,10 @@
+---
+- hosts: showcase_v2
+  remote_user: centos
+  roles:
+    - java
+    - apache
+    - deploy_app
+    - deploy_service
+  vars_files:
+    - 'vars/showcase_v2.yml'
