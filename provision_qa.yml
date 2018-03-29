@@ -3,7 +3,7 @@
   remote_user: centos
   roles:
     - java
-    #- apache
+    - apache
     - deploy_app
     - deploy_service
   vars_files:

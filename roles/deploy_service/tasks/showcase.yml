@@ -7,10 +7,10 @@
   file: path={{logs_dir}} state=directory recurse=yes
   become: yes
 
-- name: Check that the gdhi.service exists
-  stat:
-    path: /etc/systemd/system/gdhi.service
-  register: stat_result
+# - name: Check that the gdhi.service exists
+#   stat:
+#     path: /etc/systemd/system/gdhi.service
+#   register: stat_result
 
 # - name: Stop service GDHI
 #   systemd:

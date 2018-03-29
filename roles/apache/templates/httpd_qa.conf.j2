@@ -1,84 +1,88 @@
 ServerTokens OS
 
-
 ServerRoot "/etc/httpd"
 
+PidFile run/httpd.pid
+
+Timeout 600000000
+
+KeepAlive Off
+
+MaxKeepAliveRequests 100
+
+KeepAliveTimeout 15
 
 Listen 8080
 
-
 Include conf.modules.d/*.conf
 
+#Include conf.d/*.conf
+
+#LoadModule authz_host_module modules/mod_authz_host.so
+#LoadModule rewrite_module modules/mod_rewrite.so
+#LoadModule proxy_module modules/mod_proxy.so
+#LoadModule proxy_http_module modules/mod_proxy_http.so
+#LoadModule headers_module modules/mod_headers.so
+#LoadModule mime_module modules/mod_mime.so
 
 User apache
 Group apache
 
 ServerAdmin {{gdhi_twemail}}
 
-
-<Directory />
-    AllowOverride none
-    Require all denied
-</Directory>
-
-
+UseCanonicalName Off
 
 DocumentRoot "/var/www/html"
 
-<Directory "/var/www">
-    AllowOverride None
-    # Allow open access:
-    Require all granted
+<Directory />
+    Order Allow,Deny
+    Allow from all
 </Directory>
 
-<Directory "/var/www/html">
-
-    Options Indexes FollowSymLinks
-
-    AllowOverride None
-
-
-    Require all granted
+<Directory /var/www/html >
+    RewriteEngine On
+    RewriteBase "/"
+    RewriteRule "!^static(.*)$" index.html
+    LimitRequestBody 2147483647
 </Directory>
+
+<IfModule mime_module>
+    TypesConfig /etc/mime.types
+    AddType application/x-compress .Z
+    AddType application/x-gzip .gz .tgz
+    AddType text/html .shtml
+    AddOutputFilter INCLUDES .shtml
+</IfModule>
 
 <IfModule dir_module>
     DirectoryIndex index.html
 </IfModule>
+
 <Files ".ht*">
     Require all denied
 </Files>
 
-
 ErrorLog "logs/error_log"
 
-
-LogLevel warn
+<IfModule mod_userdir.c>
+    UserDir disabled
+</IfModule>
 
 ProxyPass "/api" "{{service_url}}:{{server_port}}" connectiontimeout=600000000 timeout=600000000
 
-
 <IfModule log_config_module>
-
     LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
     LogFormat "%h %l %u %t \"%r\" %>s %b" common
 
     <IfModule logio_module>
-      # You need to enable mod_logio.c to use %I and %O
       LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
     </IfModule>
-
-    CustomLog "logs/access_log" common
-
-
     CustomLog "logs/access_log" combined
 </IfModule>
 
 <IfModule alias_module>
-
     ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"
-
 </IfModule>
-
 <Directory "/var/www/cgi-bin">
     AllowOverride None
     Options None
@@ -86,29 +90,28 @@ ProxyPass "/api" "{{service_url}}:{{server_port}}" connectiontimeout=600000000 t
 </Directory>
 
 <IfModule mime_module>
-
     TypesConfig /etc/mime.types
-
     AddType application/x-compress .Z
     AddType application/x-gzip .gz .tgz
-
     AddType text/html .shtml
     AddOutputFilter INCLUDES .shtml
 </IfModule>
-
 AddDefaultCharset UTF-8
 
 <IfModule mime_magic_module>
-
     MIMEMagicFile conf/magic
 </IfModule>
 
+ServerSignature On
 
-
+SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript
 
 EnableSendfile on
 
-# Supplemental configuration
-#
-# Load config files in the "/etc/httpd/conf.d" directory, if any.
-IncludeOptional conf.d/*.conf
+Header unset Server
+ServerSignature Off
+ServerTokens Prod
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} ^TRACE
+RewriteRule .* - [F]
