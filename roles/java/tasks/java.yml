@@ -9,3 +9,9 @@
 
 - name: Check version
   command: "java -version"
+
+- name: install unzip
+  yum:
+    name: unzip
+    state: present
+  become: yes

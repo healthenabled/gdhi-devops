@@ -5,18 +5,18 @@
        state: present
     become: yes
 
-  - name: production tasks
+  - name: production apache tasks
     include: production.yml
     tags: production
 
-  - name: showcase tasks
+  - name: showcase apache tasks
     include: showcase.yml
     tags: showcase
 
-  - name: qa tasks
+  - name: qa apache tasks
     include: qa.yml
     tags: qa
 
-  - name: showcase_v2 tasks
+  - name: showcase_v2 apache tasks
     include: showcase_v2.yml
     tags: showcase_v2

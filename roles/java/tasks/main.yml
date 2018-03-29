@@ -1,17 +1,5 @@
 ---
 # tasks file for java
-- name: Install Java8
-  yum:
-     name: java-1.8.0-openjdk
-     state: present
-     update_cache: yes
-  become: yes
-
-- name: Check version
-  command: "java -version"
-
-- name: install unzip
-  yum:
-    name: unzip
-    state: present
-  become: yes
+- name: showcase_v2 Java tasks
+  include: java.yml
+  tags: showcase_v2
