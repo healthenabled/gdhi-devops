@@ -8,4 +8,4 @@
     - deploy_service
   vars_files:
     - 'vars/qa.yml'
-  tags: qa
+  #tags: qa
