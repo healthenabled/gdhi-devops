@@ -1,0 +1,3 @@
+---
+  - name: Install extensions
+    command: psql -d gdhi_qa -c "create EXTENSION uuid-ossp;" -h {{service_deploy_db_host}} -U gdhi

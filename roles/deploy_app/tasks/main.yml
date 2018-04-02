@@ -8,3 +8,23 @@
       extra_opts: [--strip-components=1]
     become: yes
     tags: showcase_v2
+
+  - name: Download GDHI_App Artifact
+    unarchive:
+      src: "{{ artifact_app_url }}"
+      dest: "{{deploy_dir}}"
+      remote_src: yes
+      mode: 0777
+      extra_opts: [--strip-components=1]
+    become: yes
+    tags: qa
+
+  - name: Download GDHI_App Artifact
+    unarchive:
+      src: "{{ artifact_app_url }}"
+      dest: "{{deploy_dir}}"
+      remote_src: yes
+      mode: 0777
+      extra_opts: [--strip-components=1]
+    become: yes
+    tags: production
