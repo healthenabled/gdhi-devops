@@ -2,8 +2,8 @@
 - hosts: qa
   remote_user: centos
   roles:
-    - java
-    - apache
+    #- java
+    #- apache
     - deploy_app
     - deploy_service
   vars_files:
