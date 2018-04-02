@@ -14,7 +14,7 @@
 
 - name: Web Service Config file
   template:
-    src: httpd.conf.j2
+    src: httpd_showcase_v2.conf.j2
     dest: /etc/httpd/conf/httpd.conf
   become: yes
 
