@@ -1,0 +1,24 @@
+---
+- hosts: ci
+  remote_user: ubuntu
+  roles:
+    - db
+  vars_files:
+    - 'vars/qa.yml'
+  tags: qa
+
+- hosts: ci
+  remote_user: centos
+  roles:
+    - db
+  vars_files:
+    - 'vars/showcase_v2.yml'
+  tags: showcase_v2
+
+- hosts: ci
+  remote_user: centos
+  roles:
+    - db
+  vars_files:
+    - 'vars/prod.yml'
+  tags: production

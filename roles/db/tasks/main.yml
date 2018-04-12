@@ -1,0 +1,5 @@
+---
+  - name: install uuid-ossp ext
+    shell: PGPASSWORD={{service_deploy_db_password}} psql -h {{service_deploy_db_host}} -U {{service_deploy_db_username}} -d {{db_name}} -c "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\""
+    become: yes
+    tags: qa
