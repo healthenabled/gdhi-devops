@@ -20,23 +20,12 @@
   become: yes
   when: stat_result.stat.exists == True
 
-# - name: Check that the gdhi exists
-#   stat:
-#     path: /etc/init.d/gdhi
-#   register: stat_showcase_result
-#
-# - name: Stop service GDHI showcase
-#   service:
-#     name: gdhi
-#     state: stopped
-#   become: yes
-#   when: stat_showcase_result.stat.exists == True
-
 - name: Find existing jar
   find:
     paths: "{{deploy_path}}"
     patterns: "gdhi-1.0.*"
   register: jar_files
+  become: yes
 
 - name: Remove existing jar
   file:
@@ -75,15 +64,3 @@
     state: restarted
     daemon_reload: yes
   become: yes
-
-# - name: GDHI service copy template file for showcase
-#   template:
-#     src: gdhi.j2
-#     dest: /etc/init.d/gdhi
-#   become: yes
-
-# - name: Start service GDHI showcase
-#   service:
-#     name: gdhi
-#     state: restarted
-#   become: yes
