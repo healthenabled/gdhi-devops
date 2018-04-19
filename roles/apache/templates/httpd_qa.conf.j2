@@ -46,12 +46,12 @@ DocumentRoot "/var/www/html"
     LimitRequestBody 2147483647
 </Directory>
 
-<Location "/admin"> 
-	AuthUserFile /etc/users 
-	AuthName "Please enter admin username and password to access" 
+<Location "/admin">
+	AuthUserFile /etc/users
+	AuthName "Please enter admin username and password to access"
 	AuthType Basic
 	Require user admin
-</Location> 
+</Location>
 
 <IfModule mime_module>
     TypesConfig /etc/mime.types
