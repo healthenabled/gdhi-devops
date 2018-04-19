@@ -6,11 +6,12 @@
 #     persistent: yes
 #   become: yes
 
-- name: install apache web server
-  yum:
-     name: httpd
-     state: present
-  become: yes
+- htpasswd:
+    path: /etc/users
+    name: {{admin_username}}
+    password: {{admin_password}}
+    owner: root
+    mode: 0640
 
 - name: Web Service Config file
   template:
