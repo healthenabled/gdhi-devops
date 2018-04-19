@@ -47,7 +47,7 @@ DocumentRoot "/var/www/html"
 </Directory>
 
 <Location "/admin">
-	AuthUserFile /etc/users
+	AuthUserFile {{ authentication_file_path }}
 	AuthName "Please enter admin username and password to access"
 	AuthType Basic
 	Require user admin
