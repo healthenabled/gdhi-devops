@@ -6,7 +6,13 @@
 #     persistent: yes
 #   become: yes
 
-- htpasswd:
+- name: Installing passlib module
+  yum:
+      name: python-passlib
+      state: present
+
+- name: Setting admin authentication details
+  htpasswd:
     path: /etc/users
     name: "{{ admin_username }}"
     password: "{{ admin_password }}"
