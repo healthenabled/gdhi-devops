@@ -17,7 +17,7 @@
     path: "{{ authentication_file_path }}"
     name: "{{ admin_username }}"
     password: "{{ admin_password }}"
-    owner: root
+    owner: centos
     mode: 0640
   become: yes
 
