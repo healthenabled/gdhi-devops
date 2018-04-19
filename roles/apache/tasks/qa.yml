@@ -17,9 +17,11 @@
     path: "{{ authentication_file_path }}"
     name: "{{ admin_username }}"
     password: "{{ admin_password }}"
-    owner: centos
+    owner: root
+    group: apache
     mode: 0640
   become: yes
+
 
 - name: Web Service Config file
   template:
