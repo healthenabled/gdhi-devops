@@ -8,8 +8,8 @@
 
 - htpasswd:
     path: /etc/users
-    name: {{admin_username}}
-    password: {{admin_password}}
+    name: {{ admin_username }}
+    password: {{ admin_password }}
     owner: root
     mode: 0640
 
