@@ -46,6 +46,13 @@ DocumentRoot "/var/www/html"
     LimitRequestBody 2147483647
 </Directory>
 
+<Location "/admin">
+	AuthUserFile {{ authentication_file_path }}
+	AuthName "Please enter admin username and password to access"
+	AuthType Basic
+	Require user admin
+</Location>
+
 <IfModule mime_module>
     TypesConfig /etc/mime.types
     AddType application/x-compress .Z

@@ -7,6 +7,22 @@
 #     persistent: yes
 #   become: yes
 
+- name: Installing passlib module
+  yum:
+      name: python-passlib
+      state: present
+  become: yes
+
+- name: Setting admin authentication details
+  htpasswd:
+    path: "{{ authentication_file_path }}"
+    name: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    owner: root
+    group: apache
+    mode: 0644
+  become: yes
+
 - name: Web Service Config file
   template:
     src: httpd.conf.j2
