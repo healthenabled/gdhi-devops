@@ -14,7 +14,7 @@
 
 - name: Setting admin authentication details
   htpasswd:
-    path: "/home/users"
+    path: "{{ authentication_file_path }}"
     name: "{{ admin_username }}"
     password: "{{ admin_password }}"
     owner: root
