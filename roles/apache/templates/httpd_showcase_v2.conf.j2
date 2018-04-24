@@ -46,6 +46,8 @@ DocumentRoot "/var/www/html"
     LimitRequestBody 2147483647
 </Directory>
 
+ErrorDocument 401 "Authentication Failed!!! Please refresh the page."
+
 <Location "/admin">
 	AuthUserFile {{ authentication_file_path }}
 	AuthName "Please enter admin username and password to access"
