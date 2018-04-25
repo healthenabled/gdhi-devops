@@ -1,38 +1,33 @@
 ---
-  - name: Download GDHI_App Artifact
-    unarchive:
-      src: "{{ artifact_app_url }}"
-      dest: "{{deploy_dir}}"
-      remote_src: yes
-      mode: 0777
-      extra_opts: [--strip-components=1]
-    become: yes
-    tags: showcase_v2
-
   - name: Get GDHI App Build Number
     uri: url="{{ app_build_number_url }}" return_content=yes
     register: app_build_number
-    tags: qa
+    tags: [qa, showcase_v2, production]
+
+  - name: Print Service Build Number
+    debug:
+      msg: "Service Build Number: {{ service_build_number }}"
+    tags: [qa, showcase_v2, production]
 
   - name: Construct GDHI tar file name
     set_fact:
       gdhi_tar: gdhi-1.0.{{ app_build_number.content }}.tar.gz
-    tags: qa
+    tags: [qa, showcase_v2, production]
 
   - name: Construct Artifact app url
     set_fact:
       artifact_app_url: "http://ec2-34-206-29-117.compute-1.amazonaws.com:8080/job/gdhi-app/{{ app_build_number.content }}/artifact/{{gdhi_tar}}"
     tags: qa
 
-  - name: Download GDHI_App Artifact
-    unarchive:
-      src: "{{ artifact_app_url }}"
-      dest: "{{deploy_dir}}"
-      remote_src: yes
-      mode: 0777
-      extra_opts: [--strip-components=1]
-    become: yes
-    tags: qa
+  - name: Construct Showcase Artifact app url
+    set_fact:
+      artifact_app_url: "http://ec2-34-206-29-117.compute-1.amazonaws.com:8080/job/gdhi-app/{{ app_build_number.content }}/artifact/{{gdhi_tar}}"
+    tags: showcase_v2
+
+  - name: Construct Production Artifact app url
+    set_fact:
+      artifact_app_url: "http://ec2-34-206-29-117.compute-1.amazonaws.com:8080/job/gdhi-app-prod/{{ app_build_number.content }}/artifact/{{gdhi_tar}}"
+    tags: production
 
   - name: Download GDHI_App Artifact
     unarchive:
@@ -42,4 +37,5 @@
       mode: 0777
       extra_opts: [--strip-components=1]
     become: yes
-    tags: production
+    tags: [qa, showcase_v2, production]
+

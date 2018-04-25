@@ -49,6 +49,10 @@
   uri: url="{{ service_build_number_url }}" return_content=yes
   register: service_build_number
 
+- name: Print Service Build Number
+  debug:
+    msg: "Service Build Number: {{ service_build_number }}"
+
 - name: Construct GDHI tar file name
   set_fact:
     gdhi_jar: gdhi-1.0.{{ service_build_number.content }}.jar
