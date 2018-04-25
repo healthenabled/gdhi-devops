@@ -55,7 +55,7 @@
 
 - name: Construct Artifact service url
   set_fact:
-    artifact_service_url: "http://ec2-34-206-29-117.compute-1.amazonaws.com:8080/job/gdhi-service/{{ service_build_number.content }}/artifact/{{gdhi_jar}}"
+    artifact_service_url: "http://ec2-34-206-29-117.compute-1.amazonaws.com:8080/job/gdhi-service/{{ service_build_number.content }}/artifact/build/libs/{{gdhi_jar}}"
 
 - name: Download GDHI_service artifact
   get_url:
