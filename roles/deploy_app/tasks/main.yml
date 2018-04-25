@@ -10,7 +10,7 @@
     tags: showcase_v2
 
   - name: Get GDHI App Build Number
-    shell: wget {{ app_build_number_url }}
+    uri: url="{{ app_build_number_url }}" return_content=yes
     register: app_build_number
     tags: qa
 
