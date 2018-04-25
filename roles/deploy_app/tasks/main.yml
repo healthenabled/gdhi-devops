@@ -16,12 +16,12 @@
 
   - name: Construct GDHI tar file name
     set_fact:
-      gdhi_tar: gdhi-1.0.{{ app_build_number }}.tar.gz
+      gdhi_tar: gdhi-1.0.{{ app_build_number.content }}.tar.gz
     tags: qa
 
   - name: Construct Artifact app url
     set_fact:
-      artifact_app_url: "http://ec2-34-206-29-117.compute-1.amazonaws.com:8080/job/gdhi-app/{{ app_build_number }}/artifact/{{gdhi_tar}}"
+      artifact_app_url: "http://ec2-34-206-29-117.compute-1.amazonaws.com:8080/job/gdhi-app/{{ app_build_number.content }}/artifact/{{gdhi_tar}}"
     tags: qa
 
   - name: Download GDHI_App Artifact
