@@ -3,9 +3,9 @@
     uri: url="{{ app_build_number_url }}" return_content=yes
     register: app_build_number
 
-  - name: Print Service Build Number
+  - name: Print App Build Number
     debug:
-      msg: "Service Build Number: {{ service_build_number }}"
+      msg: "App Build Number: {{ app_build_number }}"
 
   - name: Construct GDHI tar file name
     set_fact:
