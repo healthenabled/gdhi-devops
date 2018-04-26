@@ -51,7 +51,7 @@
 
 - name: Print Service Build Number
   debug:
-    msg: "Service Build Number: {{ service_build_number }}"
+    msg: "Service Build Number: {{ service_build_number.content }}"
 
 - name: Construct GDHI tar file name
   set_fact:

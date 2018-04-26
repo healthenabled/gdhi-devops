@@ -5,7 +5,7 @@
 
   - name: Print App Build Number
     debug:
-      msg: "App Build Number: {{ app_build_number }}"
+      msg: "App Build Number: {{ app_build_number.content }}"
 
   - name: Construct GDHI tar file name
     set_fact:
