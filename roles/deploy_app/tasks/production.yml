@@ -1,0 +1,26 @@
+---
+  - name: Get GDHI App Build Number
+    uri: url="{{ app_build_number_url }}" return_content=yes
+    register: app_build_number
+
+  - name: Print Service Build Number
+    debug:
+      msg: "Service Build Number: {{ service_build_number }}"
+
+  - name: Construct GDHI tar file name
+    set_fact:
+      gdhi_tar: gdhi-1.0.{{ app_build_number.content }}.tar.gz
+
+  - name: Construct Production Artifact app url
+    set_fact:
+      artifact_app_url: "http://ec2-34-206-29-117.compute-1.amazonaws.com:8080/job/gdhi-app-prod/{{ app_build_number.content }}/artifact/{{gdhi_tar}}"
+
+  - name: Download GDHI_App Artifact
+    unarchive:
+      src: "{{ artifact_app_url }}"
+      dest: "{{deploy_dir}}"
+      remote_src: yes
+      mode: 0777
+      extra_opts: [--strip-components=1]
+    become: yes
+
