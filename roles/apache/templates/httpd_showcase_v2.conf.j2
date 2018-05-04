@@ -56,8 +56,8 @@ ErrorDocument 401 "Authentication Failed!!! Please refresh the page."
 </Location>
 
 RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteRule ^(admin)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule ^.*\/(admin|health_indicator_questionnaire).*$ https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
 
 <IfModule mime_module>
     TypesConfig /etc/mime.types

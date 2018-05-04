@@ -55,6 +55,10 @@ ErrorDocument 401 "Authentication Failed!!! Please refresh the page."
 	Require user admin
 </Location>
 
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule ^.*\/(admin|health_indicator_questionnaire).*$ https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
+
 <IfModule mime_module>
     TypesConfig /etc/mime.types
     AddType application/x-compress .Z
