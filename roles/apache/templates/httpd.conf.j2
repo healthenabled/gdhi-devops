@@ -42,7 +42,7 @@ DocumentRoot "/var/www/html"
 <Directory /var/www/html >
     RewriteEngine On
     RewriteBase "/"
-    RewriteRule "!^static(.*)$" index.html
+    RewriteRule "!^(static|favicon)(.*)$" index.html
     LimitRequestBody 2147483647
 </Directory>
 

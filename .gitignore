@@ -62,3 +62,6 @@ gradle-app.setting
 # End of https://www.gitignore.io/api/git,java,gradle,ansible,terraform
 
 ##Host File Details#
+
+
+.idea
